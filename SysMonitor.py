@@ -10,8 +10,8 @@ def sys_output(scheduler, start_time):
 
     current_time = time.time()
 
-    # stop after 60 seconds
-    if current_time - start_time >= 60:
+    # stop after 10 seconds
+    if current_time - start_time >= 10:
         wb.save(excel_path)
         return
 
@@ -21,9 +21,10 @@ def sys_output(scheduler, start_time):
     disk_percent = util.disk_usage('C:\\').percent
 
     # write one sample per row: (CPU, Memory, Disk)
-    sheet1.write(row, 0, cpu_percent)
-    sheet1.write(row, 1, memory_percent)
-    sheet1.write(row, 2, disk_percent)
+    sheet1.write(row, 0, round(current_time - start_time))  # time since logging began
+    sheet1.write(row, 1, cpu_percent)
+    sheet1.write(row, 2, memory_percent)
+    sheet1.write(row, 3, disk_percent)
 
     row += 1
 
@@ -40,9 +41,10 @@ if __name__ == '__main__':
     sheet1 = wb.add_sheet('Sheet 1')
 
     # header row
-    sheet1.write(0, 0, 'CPU Percentage')
-    sheet1.write(0, 1, 'Memory Percentage')
-    sheet1.write(0, 2, 'Disk Percentage')
+    sheet1.write(0, 0, 'Time (sec)')
+    sheet1.write(0, 1, 'CPU Percentage')
+    sheet1.write(0, 2, 'Memory Percentage')
+    sheet1.write(0, 3, 'Disk Percentage')
 
     excel_path = 'C:/Users/tarun/OneDrive/Desktop/Projects/System Resource Monitor/system_output.xls'
 
