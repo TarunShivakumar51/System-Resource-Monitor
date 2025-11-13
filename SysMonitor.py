@@ -1,8 +1,6 @@
 import psutil as util
 import sched
 import time
-import os
-import xlwt
 from xlwt import Workbook
 
 row = 1  # next Excel row to write
