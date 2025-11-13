@@ -3,8 +3,6 @@ import sched
 import time
 import os
 
-
-
 def sys_output(scheduler, f, start_time):
 
     current_time = time.time()
@@ -24,9 +22,6 @@ def sys_output(scheduler, f, start_time):
 
     # schedule next run in 5 seconds
     scheduler.enter(5, 1, sys_output, (scheduler, f, start_time))
-
-
-
 
 if __name__ == '__main__':
     path = 'C:/Users/tarun/OneDrive/Desktop/Projects/System Resource Monitor/Output Data.txt'
