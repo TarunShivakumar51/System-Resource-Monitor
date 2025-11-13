@@ -1,3 +1,0 @@
-CPU Percentage, Memory Percentage, Disk Percentage
-26.1, 81.3, 26.3
-16.1, 81.5, 26.3
