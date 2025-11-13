@@ -2,6 +2,7 @@ import psutil as util
 import sched
 import time
 import os
+import pandas as pd
 
 def sys_output(scheduler, f, start_time):
 
@@ -15,6 +16,7 @@ def sys_output(scheduler, f, start_time):
     cpu_percent = str(util.cpu_percent(1))
     memory_percent = str(util.virtual_memory()[2])
     disk_percent = str(util.disk_usage('/')[3])
+    data = (cpu_percent, memory_percent, disk_percent)
     f.write(cpu_percent + ", " + memory_percent + ", " + disk_percent + "\n")
 
     f.flush()
@@ -29,7 +31,6 @@ if __name__ == '__main__':
     f = open(path, 'w')
 
     f.write('CPU Percentage, Memory Percentage, Disk Percentage\n')
-
 
     s = sched.scheduler(time.time, time.sleep)
 
