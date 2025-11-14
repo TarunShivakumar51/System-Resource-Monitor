@@ -36,7 +36,6 @@ def sys_output(scheduler, start_time):
     # schedule next run in 5 seconds
     scheduler.enter(5, 1, sys_output, (scheduler, start_time))
 
-
 def cpu_percent_graph(df):
     plt.figure(figsize=(8, 5))
 
@@ -50,6 +49,31 @@ def cpu_percent_graph(df):
     plt.title("CPU Percentage vs. Time")
     plt.show()
 
+def memory_percent_graph(df):
+    plt.figure(figsize=(8, 5))
+
+    x = df["Time (sec)"]
+    y = df["Memory Percentage"]
+
+    plt.scatter(x, y)
+    plt.plot(x,y)
+    plt.xlabel("Time (sec)")
+    plt.ylabel("Memory Percentage")
+    plt.title("Memory Percentage vs. Time")
+    plt.show()
+
+def disk_percent_graph(df):
+    plt.figure(figsize=(8, 5))
+
+    x = df["Time (sec)"]
+    y = df["Disk Percentage"]
+
+    plt.scatter(x, y)
+    plt.plot(x,y)
+    plt.xlabel("Time (sec)")
+    plt.ylabel("Disk Percentage")
+    plt.title("Disk Percentage vs. Time")
+    plt.show()
 
 if __name__ == '__main__':
 
@@ -76,3 +100,5 @@ if __name__ == '__main__':
     df = pd.read_excel(excel_path)
 
     cpu_percent_graph(df)
+    memory_percent_graph(df)
+    disk_percent_graph(df)
